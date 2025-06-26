@@ -1,0 +1,48 @@
+.container {
+  position: fixed;
+  top: 4rem;
+  right: 0;
+  left: auto;
+  height: auto;
+  width: 5vw;
+  min-width: 5%;
+  max-width: 5%;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+.button {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-radius: 9999px;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border 0.2s;
+  border: 2px solid transparent;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.buttonActive {
+}
+.button:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+.buttonLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  margin-top: 0.25rem;
+}
+.icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+} 

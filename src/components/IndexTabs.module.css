@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-left: 2%;
+}
+.tab {
+  padding: 0.5rem 1.25rem;
+  background: linear-gradient(180deg, #e5e7eb 0%, #f9fafb 100%);
+  color: #9ca3af;
+  border: none;
+  border-radius: 0.75rem 0.75rem 0 0;
+  font-size: 1.125rem;
+  font-weight: bold;
+  transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  box-shadow: none;
+}
+.tabActive {
+  background: linear-gradient(180deg, #dbeafe 0%, #f9fafb 100%);
+  color: #2563eb;
+  box-shadow: 0 2px 8px rgba(59,130,246,0.08);
+  font-weight: 800;
+}
+.tab:hover {
+  background: linear-gradient(180deg, #f3f4f6 0%, #f9fafb 100%);
+  color: #3b82f6;
+} 
