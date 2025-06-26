@@ -1,0 +1,51 @@
+.container {
+  width: 90%;
+  margin-left: 2%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.card {
+  background: #f9fafb;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 180px;
+  border: 1px solid #e5e7eb;
+}
+.icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+.graph {
+  margin: 0.75rem 0;
+}
+.value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #111827;
+  margin-top: 0.5rem;
+}
+.change {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+.changeUp {
+  color: #2563eb;
+}
+.changeDown {
+  color: #ef4444;
+} 

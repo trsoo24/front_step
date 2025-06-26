@@ -1,0 +1,117 @@
+.container {
+  margin: 2.5rem 0 0 2%;
+  width: 90%;
+  max-width: 100%;
+}
+.card {
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border: 1px solid #f3f4f6;
+  overflow: hidden;
+  width: 100%;
+}
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem 0.5rem 2rem;
+}
+.title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+.update {
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+.tabs {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0 2rem 0.5rem 2rem;
+  border-bottom: 1px solid #f3f4f6;
+  margin-bottom: 0.5rem;
+}
+.tab {
+  font-size: 1rem;
+  color: #9ca3af;
+  background: none;
+  border: none;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem 0.75rem 0 0;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.tabActive {
+  color: #2563eb;
+  background: #f3f4f6;
+}
+.table {
+  width: 100%;
+  font-size: 1rem;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.thead {
+  background: #f9fafb;
+  color: #374151;
+  font-size: 0.95rem;
+}
+.th, .td {
+  padding: 1rem 1rem;
+  text-align: center;
+}
+.tdRight {
+  text-align: right;
+}
+.rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rankCircle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+  background: #2563eb;
+}
+.rank2 {
+  background: #6b7280;
+}
+.rank3 {
+  background: #f59e42;
+}
+.name {
+  color: #111827;
+  font-weight: 700;
+}
+.price {
+  font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
+  color: #111827;
+  font-weight: 600;
+}
+.changeUp {
+  color: #ef4444;
+  font-weight: bold;
+}
+.changeDown {
+  color: #2563eb;
+  font-weight: bold;
+}
+.volume {
+  color: #6b7280;
+}
+.tr {
+  border-bottom: 1px solid #f3f4f6;
+}
+.tr:last-child {
+  border-bottom: none;
+} 
