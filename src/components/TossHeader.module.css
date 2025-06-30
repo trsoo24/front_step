@@ -79,4 +79,34 @@
 }
 .loginBtn:hover {
   background: #2563eb;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1.5rem;
+}
+
+.userName {
+  font-weight: 600;
+  color: #374151;
+  font-size: 1rem;
+}
+
+.logoutBtn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid #d1d5db;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.logoutBtn:hover {
+  background: #e5e7eb;
+  color: #111827;
 } 
