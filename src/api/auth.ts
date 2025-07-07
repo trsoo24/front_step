@@ -1,3 +1,5 @@
+import { getApiUrl, API_ENDPOINTS } from '../config/api';
+
 // 인증 관련 API 함수들
 
 interface LoginData {
@@ -30,7 +32,7 @@ interface AuthResponse {
 // 로그인 API 호출
 export const loginUser = async (data: LoginData): Promise<AuthResponse> => {
   try {
-    const response = await fetch('http://localhost:8080/api/users/login', {
+    const response = await fetch(getApiUrl(API_ENDPOINTS.LOGIN), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -60,7 +62,7 @@ export const loginUser = async (data: LoginData): Promise<AuthResponse> => {
 // 회원가입 API 호출
 export const signupUser = async (data: SignupData): Promise<AuthResponse> => {
   try {
-    const response = await fetch('http://localhost:8080/api/users/signup', {
+    const response = await fetch(getApiUrl(API_ENDPOINTS.SIGNUP), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -99,7 +101,7 @@ export const isLoggedIn = () => {
 };
 
 export const checkUsernameAvailable = async (username: string): Promise<{ available: boolean }> => {
-  const res = await fetch(`http://localhost:8080/api/users/check-username?username=${encodeURIComponent(username)}`);
+  const res = await fetch(`${getApiUrl(API_ENDPOINTS.CHECK_USERNAME)}?username=${encodeURIComponent(username)}`);
   if (!res.ok) throw new Error('중복 확인에 실패했습니다.');
   return await res.json();
 }; 

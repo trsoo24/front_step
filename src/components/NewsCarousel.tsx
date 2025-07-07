@@ -1,30 +1,38 @@
 import React, { useState, useEffect } from "react";
 import styles from "./NewsCarousel.module.css";
+import { getApiUrl, API_ENDPOINTS } from '../config/api';
 
-// 임시 데이터 - 추후 API 호출로 교체
-const mockNews = [
-  { id: 1, title: "'기술주 매도→모두 매도' S&P500 거의 모든 섹터 하락", summary: "44분 전 · 매일경제", src: "https://imgnews.pstatic.net/image/003/2025/06/25/NISI20250514_0001842489_web_20250514170415_20250625145918892.jpg?type=w860" },
-  { id: 2, title: "[0719개장체크] 美 증시, 차익실현 매물 속 금리 인하 기대감 지속", summary: "25분 전 · 인포스탁데일리", src: "https://imgnews.pstatic.net/image/421/2025/06/25/0008332357_001_20250625144328676.jpg?type=w860" },
-  { id: 3, title: "국제유가, 미 노동시장 냉각 신호에 소폭 하락…WTI 0.1%↓", summary: "50분 전 · 이투데이", src: "https://imgnews.pstatic.net/image/421/2025/06/25/0008332273_001_20250625142650787.jpg?type=w860" },
-  { id: 4, title: "조정 국면·금리인하 횟수에 관심…주식·채권↓ 달러↑", summary: "1시간 전 · 연합뉴스", src: "https://imgnews.pstatic.net/image/029/2025/06/25/0002963852_001_20250625142622557.jpg?type=w860" },
-  { id: 5, title: "TSMC 호실적에 엔비디아 2.6% 반등…'AI 랠리' 재점화", summary: "1시간 전 · 이데일리", src: "" },
-  { id: 6, title: "비트코인, 6만4000달러대 '약세'…리플은 10% 급등", summary: "28분 전 · 조선비즈", src: "" },
-  { id: 7, title: "오픈AI, 기존보다 60% 싼 'GPT-4o 미니' 출시", summary: "2시간 전 · 이데일리", src: "" },
-  { id: 8, title: "달러, 유로 약세에 반등…ECB '9월 인하' 시사", summary: "2시간 전 · 연합뉴스", src: "" },
-];
+// API 응답에 맞는 뉴스 데이터 타입 정의
+interface NewsItem {
+  title: string;
+  description: string;
+  urlToImage?: string;
+}
 
 const NewsCarousel = () => {
-  const [news, setNews] = useState(mockNews);
+  const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // 추후 API 호출 함수
+  // API 호출 함수
   const fetchNews = async () => {
     setLoading(true);
     try {
-      // TODO: 실제 API 호출로 교체
-      setNews(mockNews);
+      const response = await fetch(getApiUrl(API_ENDPOINTS.NEWS));
+      if (!response.ok) {
+        throw new Error('뉴스 데이터를 가져오는데 실패했습니다');
+      }
+      const data = await response.json();
+      // 배열이 아니면 articles 등에서 꺼내기
+      if (Array.isArray(data)) {
+        setNews(data);
+      } else if (Array.isArray(data.articles)) {
+        setNews(data.articles);
+      } else {
+        setNews([]);
+      }
     } catch (error) {
       console.error('뉴스 데이터 로딩 실패:', error);
+      setNews([]);
     } finally {
       setLoading(false);
     }
@@ -58,14 +66,14 @@ const NewsCarousel = () => {
         <a href="#" className={styles.more}>더 보기</a>
       </div>
       <div className={styles.cardGrid}>
-        {topNews.map((item) => (
-          <div key={item.id} className={styles.card}>
-            {item.src && (
-              <img src={item.src} alt={item.title} className={styles.cardImg} />
+        {topNews.map((item, idx) => (
+          <div key={item.title + idx} className={styles.card}>
+            {item.urlToImage && (
+              <img src={item.urlToImage} alt={item.title} className={styles.cardImg} />
             )}
             <div className={styles.cardBody}>
               <span className={styles.cardTitle}>{item.title}</span>
-              <span className={styles.cardSummary}>{item.summary}</span>
+              <span className={styles.cardSummary}>{item.description}</span>
             </div>
           </div>
         ))}
@@ -73,10 +81,10 @@ const NewsCarousel = () => {
       <div className={styles.textRows}>
         {textRows.map((row, i) => (
           <div key={i} className={styles.textRow}>
-            {row.map((item) => (
-              <div key={item.id} className={styles.textItem}>
+            {row.map((item, idx) => (
+              <div key={item.title + idx} className={styles.textItem}>
                 {item.title}
-                <span className={styles.textSummary}>{item.summary}</span>
+                <span className={styles.textSummary}>{item.description}</span>
               </div>
             ))}
           </div>
